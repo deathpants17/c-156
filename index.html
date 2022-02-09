@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <script src="./Component/rotation.js"></script>
+        <script src="./Component/fish.js"></script>
+        <script src="./Component/Game.js"></script>
+    </head>
+
+    <body>
+        <a-scene background="black">
+            <a-entity id="look" look-controls camera position="10 20 60"></a-entity>
+            <a-assets timeout="1000">
+            <a-asset-item id="island" src="./island/scene.gltf"></a-asset-item>
+            <a-asset-item id="child" src="./Diver/scene.gltf"></a-asset-item>
+        </a-assets>
+        <a-entity id="island-model" gltf-model="#island" position="0 0 150" scale="1 1 1" rotation="0 90 0" island-rotation-reader></a-entity>
+        <a-entity id="children" gtlf-model="#child" position="0 0 0" scale="0.5 0.5 0.5" animation="property:position;to:0 0 1000;easing:linear;loop:true;dur:150000" child-rotation-reader moving-fish dynamic-body="mass:0" game-play></a-entity>
+        <a-entity id="header" position="-28.5 21.5 0">
+            <a-entity position="-10 -2 0"
+            text="font:exo2bold;align:center;width:100;color:black;value:SCUBA DIVE"></a-entity>
+        </a-entity>
+
+        <a-entity position="7 -4 0">
+          <a-entity position="-25 23 0"
+          text="font:exo2bold;align:center;width:40;color:black;value:TIME\n REMAINING"></a-entity>
+        </a-entity>
+
+        <a-entity position="-10 19 0" id="timer"
+        text="font:exo2bold;align:center;width:40;color:black;value:00:00"></a-entity>
+
+      <a-entity position="7 -4 0">
+        <a-entity position="-55 15 0"
+        text="font:exo2bold;align:center;width:40;color:black;value:TARGET\n REMAINING"></a-entity>
+     </a-entity>
+
+          <a-entity position="-40 12 0" id="targets"
+          text="font:exo2bold;align:center;width:40;color:black;value:20"></a-entity>
+
+    <a-entity position="-38 -12 0">
+        <a-entity position="5 23 0"
+        text="font:exo2bold;align:center;width:40;color:black;value:SCORE"></a-entity>
+    </a-entity>
+
+    <a-entity position="-25 10.8 0"
+    text="font:exo2bold;align:center;width:40;color:black;value:0"></a-entity>
+    
+    <a-entity position="-4 10 0" id="game_over_text"
+          text="font:exo2bold;align:center;width:100;color:black;value:GAME OVER" visible="false"></a-entity>
+    </a-scene>
+    </body>
+</html>
